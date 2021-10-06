@@ -7,20 +7,24 @@ window.onload = () => {
     dishes.push({
         id: '1',
         name: 'Burger and french fries',
-        price: '12'
+        price: '12€'
     }, {
         id: '2',
         name: 'Ceasar salad',
-        price: '10'
+        price: '10€'
     }, {
         id: '3',
         name: 'Milkshake',
-        price: '5'
+        price: '5€'
     });
 
-
-
-
+    dishes.forEach(dishes =>
+        document.getElementById('menu').insertAdjacentHTML('beforeend', `
+        <div>
+                <input id="${dishes.id}" name="order" type="radio" value="${dishes.name}" checked>
+                <label for="${dishes.id}">${dishes.name} ${dishes.price}</label>
+            </div>
+        `));
     listen();
 };
 
@@ -35,9 +39,17 @@ function listen() {
             email,
             order
         }
-        console.log(orderDetails);
-        document.getElementById('messages').innerHTML =
-            `The order for the customer ${orderDetails.name} is the following:  ${orderDetails.order}. The customer may be notified by email:  ${orderDetails.email}`;
+        if (orderDetails.name != '' & orderDetails.email != '' & orderDetails.order != '') {
+            printOrder(orderDetails)
+        } else {
+            document.getElementById('messages').innerHTML = 'Please fill all details to place your order'
+        }
 
     });
 };
+
+function printOrder(orderDetails) {
+    document.getElementById('messages').innerHTML =
+        `The order for the customer ${orderDetails.name} is the following: ${orderDetails.order}.
+         The customer may be notified by email: ${orderDetails.email}`;
+}
