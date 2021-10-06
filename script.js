@@ -17,7 +17,8 @@ function listen() {
             email,
             order
         }
-        document.getElementById('messages').innerHTML = printOrder(orderDetails);
+        console.log(orderDetails);
+        document.getElementById('messages').innerHTML =
+            `The order for the customer ${orderDetails.name} is the following:  ${orderDetails.order}. The customer may be notified by email:  ${orderDetails.email}`;
     });
-
 };
