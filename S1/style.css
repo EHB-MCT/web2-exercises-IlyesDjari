@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgb(48, 48, 48);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+* {
+    color: white;
+}
+
+.but {
+    color: rgb(77, 74, 74);
+    margin-top: 5%;
+    width: 100%;
+
+}
+
+#submitme {
+    position: absolute;
+    margin-left: 45%;
+    margin-top: 20%;
+}
+
+input {
+    color: rgb(48, 48, 48);
+}
