@@ -1,8 +1,8 @@
 "use strict";
 
+import Team from './team.js'
 
 let pokemons = []
-
 showPoke();
 
 function showPoke() {
@@ -16,9 +16,22 @@ function showPoke() {
                     .then(response => response.json())
                     .then(data2 => {
                         pokemons.push(data2);
-                    })
+                    });
             });
-        });
-    console.log(pokemons);
+            buildPoke();
+        })
+}
 
-};
+function buildPoke() {
+    console.log(pokemons);
+    pokemons.forEach(pokemons =>
+        document.getElementById('pokes').insertAdjacentHTML('beforeend', `
+                 <h1>${pokemons.abilities}</h1>
+                 <div id="team" class="bgpoke">
+                 <img src="" alt="">
+                  </div>
+                 <div id="list">
+                 </div>
+                 <div class="type"></div>
+                 `));
+}
