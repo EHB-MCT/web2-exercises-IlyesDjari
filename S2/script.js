@@ -6,17 +6,19 @@ let pokemons = []
 showPoke();
 
 function showPoke() {
-    console.log("start loading message");
     fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`)
         .then(response => {
             return response.json();
         })
         .then(data => {
-            pokemons.push(data.results)
-            pokemons.forEach()
-        })
-};
+            data.results.forEach(poke => {
+                fetch(poke.url)
+                    .then(response => response.json())
+                    .then(data2 => {
+                        pokemons.push(data2);
+                    })
+            });
+        });
+    console.log(pokemons);
 
-function retrieveThem() {
-    pokemons.forEach()
-}
+};
