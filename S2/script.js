@@ -2,36 +2,43 @@
 
 import Team from './team.js'
 
-let pokemons = []
-showPoke();
-
-function showPoke() {
-    fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`)
-        .then(response => {
-            return response.json();
-        })
+const getPoke = () => {
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
+        
+        .then((res) => res.json()
         .then(data => {
             data.results.forEach(poke => {
                 fetch(poke.url)
-                    .then(response => response.json())
-                    .then(data2 => {
-                        pokemons.push(data2);
-                    });
+                .then((response) => response.json()
+                .then(data => {
+                        const pokemon = {
+                            name: data.name,
+                            image: data.sprites['front_default'],
+                            type: data.types.map((type) => type.type.name).join(', '),
+                            id: data.id
+                    }
+    
+                    createPokes(pokemon);
+                }));
             });
-            buildPoke();
-        })
+
+        }));   
+        createPokes();
+ };
+
+
+
+function createPokes(pokemon) {
+    document.getElementById('pokes').insertAdjacentHTML('beforeend', `
+    <li class="card">
+        <img class="card-image" src="${pokemon.image}"/>
+        <h2 class="card-title">${pokemon.id}. ${pokemon.name}</h2>
+        <p class="card-subtitle">Type: ${pokemon.type}</p>
+    </li>
+`);
+
+   
+
 }
 
-function buildPoke() {
-    console.log(pokemons);
-    pokemons.forEach(pokemons =>
-        document.getElementById('pokes').insertAdjacentHTML('beforeend', `
-                 <h1>${pokemons.abilities}</h1>
-                 <div id="team" class="bgpoke">
-                 <img src="" alt="">
-                  </div>
-                 <div id="list">
-                 </div>
-                 <div class="type"></div>
-                 `));
-}
+ getPoke();
