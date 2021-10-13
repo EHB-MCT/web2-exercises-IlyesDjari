@@ -6,6 +6,8 @@ window.onload = function () {
     window.setTimeout(getPoke, 3000);
 }
 
+let pokiess = []
+
 
 const getPoke = () => {
     fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
@@ -22,13 +24,14 @@ const getPoke = () => {
                                     type: data.types.map((type) => type.type.name).join(', '),
                                     id: data.id
                                 }
-
+                                pokiess.push(pokemon);
                                 createPokes(pokemon);
+
                             }));
                 });
 
             }));
-    createPokes();
+    hereIAM();
 };
 
 function createPokes(pokemon) {
@@ -39,6 +42,8 @@ function createPokes(pokemon) {
         <p class="card-subtitle">Type: ${pokemon.type}</p>
     </li>
 `);
+}
 
-
+function hereIAM() {
+    console.log('Here we are', pokiess);
 }
