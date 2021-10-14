@@ -26,10 +26,8 @@ const getPoke = () => {
                                 }
                                 pokiess.push(pokemon);
                                 createPokes(pokemon);
-
                             }));
                 });
-
             }));
     hereIAM();
 };
