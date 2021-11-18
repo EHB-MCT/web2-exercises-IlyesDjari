@@ -19,7 +19,9 @@
   "homepage": "https://github.com/EHB-MCT/web2-exercises-IlyesDjari#readme",
   "dependencies": {
     "cleave.js": "^1.6.0",
-    "webpack": "^5.59.1",
+    "webpack": "^5.59.1"
+  },
+  "devDependencies": {
     "webpack-cli": "^4.9.1"
   }
 }

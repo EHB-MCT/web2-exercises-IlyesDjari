@@ -1,0 +1,9 @@
+{
+    "name": "modules_exercice",
+    "version": "V1",
+    "description": "here i'm making diffrent JSON files with the use of fs",
+    "type": "module",
+    "main": "modules.js",
+    "author": "Ilyes Djari",
+    "license": "ISC"
+}

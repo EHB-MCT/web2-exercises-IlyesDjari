@@ -10,7 +10,7 @@ let pokiess = []
 
 
 const getPoke = () => {
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=1000')
 
         .then((res) => res.json()
             .then(data => {
